@@ -6,7 +6,8 @@ from openai import OpenAI
 GPT_MODEL = "gpt-3.5-turbo"
 
 # Replace with your actual OpenAI API key
-client = OpenAI(api_key='your-api-key')
+#client = OpenAI(api_key='your-api-key')
+client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"))
 
 # Generate English text
 response_english = client.chat.completions.create(
@@ -29,7 +30,7 @@ response_french = client.chat.completions.create(
     messages=[
       {
         "role": "user",
-        "content": "Translate the following English text to French: " + english_text
+        "content": "Translate the following English text to Spanish: " + english_text
       }
     ],
     max_tokens=100
